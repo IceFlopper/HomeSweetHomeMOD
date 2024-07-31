@@ -1,43 +1,15 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
     <ThoughtDef>
-        <defName>MissedCaravanMember</defName>
-        <durationDays>15</durationDays>
+        <defName>HomeSweetHome_Thought</defName>
+        <label>happy to be home</label>
+        <durationDays>2</durationDays>
         <stackLimit>1</stackLimit>
         <thoughtClass>Thought_Memory</thoughtClass>
-        <label>missed a caravan member</label>
-        <description>Someone from the colony is away with the caravan. It's been too long without them.</description>
         <stages>
             <li>
-                <label>misses a caravan member</label>
-                <baseMoodEffect>-5</baseMoodEffect>
-                <description>Missing someone from the caravan.</description>
-            </li>
-            <li>
-                <label>really misses a caravan member</label>
-                <baseMoodEffect>-10</baseMoodEffect>
-                <description>Really missing someone from the caravan.</description>
-            </li>
-            <li>
-                <label>desperately misses a caravan member</label>
-                <baseMoodEffect>-15</baseMoodEffect>
-                <description>Desperately missing someone from the caravan.</description>
-            </li>
-            <!-- Continue adding stages up to 15 days, if necessary -->
-        </stages>
-    </ThoughtDef>
-    <ThoughtDef>
-        <defName>CaravanReturned</defName>
-        <durationDays>3</durationDays>
-        <stackLimit>1</stackLimit>
-        <thoughtClass>Thought_Memory</thoughtClass>
-        <label>happy a caravan member returned</label>
-        <description>Someone from the colony has returned safely with the caravan. This makes everyone happy.</description>
-        <stages>
-            <li>
-                <label>happy a caravan member returned</label>
-                <baseMoodEffect>10</baseMoodEffect>
-                <description>Happy to see someone return from the caravan.</description>
+                <label>happy to be home</label>
+                <description>The colonist is happy to be back home after a long journey.</description>
+                <baseMoodEffect>8</baseMoodEffect>
             </li>
         </stages>
     </ThoughtDef>

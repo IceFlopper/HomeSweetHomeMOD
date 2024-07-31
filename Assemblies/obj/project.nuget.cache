@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gNyIxQqtWhs=",
+  "dgSpecHash": "GeAViXSDjeCtugktNueW058u+jL9Pr2uyddTXYtnVssPu+O4cyKj0FwJvb/0ClX9nXwAd6xnowVTwrIzlpGncQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Adam\\Desktop\\Rimworld Projects\\Projects\\HomeSweetHome\\Assemblies\\HomeSweetHome.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\novie\\OneDrive\\Bureaublad\\HomeSweetHomeMOD\\Assemblies\\HomeSweetHome.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\novie\\.nuget\\packages\\lib.harmony\\2.3.3\\lib.harmony.2.3.3.nupkg.sha512"
+  ],
   "logs": []
 }

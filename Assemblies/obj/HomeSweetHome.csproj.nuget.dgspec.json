@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Adam\\Desktop\\Rimworld Projects\\Projects\\HomeSweetHome\\Assemblies\\HomeSweetHome.csproj": {}
+    "C:\\Users\\novie\\OneDrive\\Bureaublad\\HomeSweetHomeMOD\\Assemblies\\HomeSweetHome.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Adam\\Desktop\\Rimworld Projects\\Projects\\HomeSweetHome\\Assemblies\\HomeSweetHome.csproj": {
+    "C:\\Users\\novie\\OneDrive\\Bureaublad\\HomeSweetHomeMOD\\Assemblies\\HomeSweetHome.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Adam\\Desktop\\Rimworld Projects\\Projects\\HomeSweetHome\\Assemblies\\HomeSweetHome.csproj",
+        "projectUniqueName": "C:\\Users\\novie\\OneDrive\\Bureaublad\\HomeSweetHomeMOD\\Assemblies\\HomeSweetHome.csproj",
         "projectName": "HomeSweetHome",
-        "projectPath": "C:\\Users\\Adam\\Desktop\\Rimworld Projects\\Projects\\HomeSweetHome\\Assemblies\\HomeSweetHome.csproj",
-        "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Adam\\Desktop\\Rimworld Projects\\Projects\\HomeSweetHome\\Assemblies\\obj\\",
+        "projectPath": "C:\\Users\\novie\\OneDrive\\Bureaublad\\HomeSweetHomeMOD\\Assemblies\\HomeSweetHome.csproj",
+        "packagesPath": "C:\\Users\\novie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\novie\\OneDrive\\Bureaublad\\HomeSweetHomeMOD\\Assemblies\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Adam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\novie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,17 +34,18 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net472": {
           "targetAlias": "net472",
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+          "dependencies": {
+            "Lib.Harmony": {
+              "target": "Package",
+              "version": "[2.3.3, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

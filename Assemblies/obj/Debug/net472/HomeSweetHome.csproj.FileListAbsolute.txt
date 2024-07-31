@@ -75,3 +75,10 @@ C:\Users\Adam\Desktop\Rimworld Projects\Projects\HomeSweetHome\Assemblies\obj\De
 C:\Users\Adam\Desktop\Rimworld Projects\Projects\HomeSweetHome\Assemblies\obj\Debug\net472\HomeSwee.45058DA5.Up2Date
 C:\Users\Adam\Desktop\Rimworld Projects\Projects\HomeSweetHome\Assemblies\obj\Debug\net472\HomeSweetHome.dll
 C:\Users\Adam\Desktop\Rimworld Projects\Projects\HomeSweetHome\Assemblies\obj\Debug\net472\HomeSweetHome.pdb
+C:\Users\novie\OneDrive\Bureaublad\HomeSweetHomeMOD\Assemblies\obj\Debug\net472\HomeSweetHome.csproj.AssemblyReference.cache
+C:\Users\novie\OneDrive\Bureaublad\HomeSweetHomeMOD\Assemblies\obj\Debug\net472\HomeSweetHome.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\novie\OneDrive\Bureaublad\HomeSweetHomeMOD\Assemblies\obj\Debug\net472\HomeSweetHome.AssemblyInfoInputs.cache
+C:\Users\novie\OneDrive\Bureaublad\HomeSweetHomeMOD\Assemblies\obj\Debug\net472\HomeSweetHome.AssemblyInfo.cs
+C:\Users\novie\OneDrive\Bureaublad\HomeSweetHomeMOD\Assemblies\obj\Debug\net472\HomeSweetHome.csproj.CoreCompileInputs.cache
+C:\Users\novie\OneDrive\Bureaublad\HomeSweetHomeMOD\Assemblies\obj\Debug\net472\HomeSweetHome.dll
+C:\Users\novie\OneDrive\Bureaublad\HomeSweetHomeMOD\Assemblies\obj\Debug\net472\HomeSweetHome.pdb
