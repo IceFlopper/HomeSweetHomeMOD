@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ModMetaData>
+    <name>HomeSweetHome</name>
+    <author>Funstab</author>
+    <description>Adds mood effects for colonists when caravans are away and return.</description>
+    <url></url>
+    <supportedVersions>
+        <li>1.5</li>
+    </supportedVersions>
+</ModMetaData>
