@@ -6,22 +6,24 @@
         <stackLimit>1</stackLimit>
         <thoughtClass>Thought_Memory</thoughtClass>
         <label>missed a caravan member</label>
-        <baseMoodEffect>-5</baseMoodEffect>
-        <stageCount>15</stageCount>
+        <description>Someone from the colony is away with the caravan. It's been too long without them.</description>
         <stages>
             <li>
                 <label>misses a caravan member</label>
                 <baseMoodEffect>-5</baseMoodEffect>
+                <description>Missing someone from the caravan.</description>
             </li>
             <li>
                 <label>really misses a caravan member</label>
                 <baseMoodEffect>-10</baseMoodEffect>
+                <description>Really missing someone from the caravan.</description>
             </li>
             <li>
                 <label>desperately misses a caravan member</label>
                 <baseMoodEffect>-15</baseMoodEffect>
+                <description>Desperately missing someone from the caravan.</description>
             </li>
-            <!-- Continue adding stages up to 15 days -->
+            <!-- Continue adding stages up to 15 days, if necessary -->
         </stages>
     </ThoughtDef>
     <ThoughtDef>
@@ -30,12 +32,12 @@
         <stackLimit>1</stackLimit>
         <thoughtClass>Thought_Memory</thoughtClass>
         <label>happy a caravan member returned</label>
-        <baseMoodEffect>10</baseMoodEffect>
-        <stageCount>1</stageCount>
+        <description>Someone from the colony has returned safely with the caravan. This makes everyone happy.</description>
         <stages>
             <li>
                 <label>happy a caravan member returned</label>
                 <baseMoodEffect>10</baseMoodEffect>
+                <description>Happy to see someone return from the caravan.</description>
             </li>
         </stages>
     </ThoughtDef>

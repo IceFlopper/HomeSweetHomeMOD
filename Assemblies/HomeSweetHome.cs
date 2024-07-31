@@ -1,9 +1,7 @@
 using System;
-using System.Linq;
 using RimWorld;
 using Verse;
-using Verse.AI.Group;
-using System.Collections.Generic;
+using HarmonyLib;
 
 namespace HomeSweetHome
 {
@@ -11,40 +9,21 @@ namespace HomeSweetHome
     {
         public HomeSweetHome(ModContentPack content) : base(content)
         {
-            LongEventHandler.QueueLongEvent(Initialize, "Initializing HomeSweetHome", false, null);
+            Log.Message("[HomeSweetHome] HomeSweetHome loaded");
+            var harmony = new Harmony("com.funstab.homesweethome");
+            harmony.PatchAll();
+            Log.Message("[HomeSweetHome] Harmony patches applied");
+            GetSettings<HomeSweetHomeSettings>();
         }
 
-        private void Initialize()
-        {
-            // Subscribe to the necessary game events
-            CaravanFormedUtility.CaravanFormed += OnCaravanFormed;
-            CaravanArrivalUtility.CaravanArrived += OnCaravanArrived;
-        }
+        public override string SettingsCategory() => "Home Sweet Home";
+    }
 
-        private void OnCaravanFormed(Caravan caravan)
+    public class HomeSweetHomeSettings : ModSettings
+    {
+        public override void ExposeData()
         {
-            foreach (var pawn in caravan.PawnsListForReading)
-            {
-                pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDef.Named("MissedCaravanMember"));
-            }
-        }
-
-        private void OnCaravanArrived(Caravan caravan)
-        {
-            foreach (var pawn in caravan.PawnsListForReading)
-            {
-                pawn.needs.mood.thoughts.memories.RemoveMemoriesOfDef(ThoughtDef.Named("MissedCaravanMember"));
-                pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDef.Named("CaravanReturned"));
-            }
-
-            foreach (var pawn in PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction)
-            {
-                if (!caravan.PawnsListForReading.Contains(pawn))
-                {
-                    pawn.needs.mood.thoughts.memories.RemoveMemoriesOfDef(ThoughtDef.Named("MissedCaravanMember"));
-                    pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDef.Named("CaravanReturned"));
-                }
-            }
+            base.ExposeData();
         }
     }
 }

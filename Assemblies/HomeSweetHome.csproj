@@ -12,5 +12,8 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>C:\Users\Adam\Desktop\Rimworld Projects\Projects\HomeSweetHome\Assemblies\0Harmony.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
