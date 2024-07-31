@@ -1,82 +1,68 @@
 ﻿using HarmonyLib;
-using RimWorld;
 using RimWorld.Planet;
-using System.Collections.Generic;
+using RimWorld;
 using Verse;
+using System;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace HomeSweetHome
 {
-    // This patch records the departure time of a caravan.
-    [HarmonyPatch(typeof(CaravanExitMapUtility), "ExitMapAndCreateCaravan")]
-    public static class Patch_ExitMapAndCreateCaravan
+    [HarmonyPatch(typeof(CaravanExitMapUtility))]
+    [HarmonyPatch("ExitMapAndCreateCaravan")]
+    [HarmonyPatch(new Type[] { typeof(IEnumerable<Pawn>), typeof(Faction), typeof(int), typeof(int), typeof(bool) })] // Adjust the parameter types as necessary
+    public static class CaravanExitMapUtility_ExitMapAndCreateCaravan_Patch
     {
-        public static Dictionary<Caravan, int> CaravanDepartureTimes = new Dictionary<Caravan, int>();
-
-        [HarmonyPostfix]
-        public static void RecordDepartureTime(Caravan __result)
+        public static void Postfix(Caravan __result)
         {
-            if (__result != null)
+            if (__result.Faction == Faction.OfPlayer)
             {
-                // Record the departure time in ticks.
-                CaravanDepartureTimes[__result] = Find.TickManager.TicksGame;
+                __result.GetComponent<CaravanDepartureTimeTracker>().SetDepartureTime(Find.TickManager.TicksGame);
             }
         }
     }
 
-    // This patch applies the "Home Sweet Home" thought when a caravan arrives.
     [HarmonyPatch(typeof(CaravanArrivalAction_Enter), "Arrived")]
     public static class Caravan_ArrivalAction_Enter_Arrived_Patch
     {
-        [HarmonyPostfix]
         public static void Postfix(CaravanArrivalAction_Enter __instance, Caravan caravan)
         {
             Log.Message("HomeSweetHome: Caravan arrived. Checking faction...");
 
             if (caravan.Faction == Faction.OfPlayer)
             {
-                Log.Message("HomeSweetHome: Caravan belongs to player.");
+                int departureTime = caravan.GetComponent<CaravanDepartureTimeTracker>().GetDepartureTime();
+                int currentTime = Find.TickManager.TicksGame;
+                int timeGone = currentTime - departureTime;
+                int threeDaysInTicks = 3 * 60000; // 3 days * 60000 ticks/day
 
-                if (Patch_ExitMapAndCreateCaravan.CaravanDepartureTimes.TryGetValue(caravan, out int departureTicks))
+                if (timeGone >= threeDaysInTicks)
                 {
-                    int currentTicks = Find.TickManager.TicksGame;
-                    int timeAway = currentTicks - departureTicks;
-                    int threeDaysTicks = 60000 * 3; // 3 days in ticks
+                    Log.Message("HomeSweetHome: Caravan was gone for at least 3 days. Applying Home Sweet Home thought to caravan members.");
+                    ApplyHomeSweetHomeThought(caravan.PawnsListForReading);
 
-                    Log.Message($"HomeSweetHome: Caravan was away for {timeAway} ticks.");
-
-                    if (timeAway >= threeDaysTicks)
+                    FieldInfo mapParentField = typeof(CaravanArrivalAction_Enter).GetField("mapParent", BindingFlags.NonPublic | BindingFlags.Instance);
+                    if (mapParentField != null)
                     {
-                        Log.Message("HomeSweetHome: Caravan was away for 3 or more days. Applying Home Sweet Home thought to caravan members.");
-                        ApplyHomeSweetHomeThought(caravan.PawnsListForReading);
-                    }
-
-                    // Remove the record as it's no longer needed.
-                    Patch_ExitMapAndCreateCaravan.CaravanDepartureTimes.Remove(caravan);
-                }
-                else
-                {
-                    Log.Message("HomeSweetHome: No departure record found for this caravan.");
-                }
-
-                // Reflectively access and process the map for home colonists.
-                FieldInfo mapParentField = typeof(CaravanArrivalAction_Enter).GetField("mapParent", BindingFlags.NonPublic | BindingFlags.Instance);
-                if (mapParentField != null)
-                {
-                    MapParent mapParent = (MapParent)mapParentField.GetValue(__instance);
-                    if (mapParent != null)
-                    {
-                        Map map = mapParent.Map;
-                        if (map != null)
+                        MapParent mapParent = (MapParent)mapParentField.GetValue(__instance);
+                        if (mapParent != null)
                         {
-                            Log.Message("HomeSweetHome: Applying Home Sweet Home thought to all colonists at home map.");
-                            ApplyHomeSweetHomeThought(map.mapPawns.FreeColonists);
+                            Map map = mapParent.Map;
+                            if (map != null)
+                            {
+                                Log.Message("HomeSweetHome: Applying Home Sweet Home thought to all colonists at home map.");
+                                ApplyHomeSweetHomeThought(map.mapPawns.FreeColonists);
+                            }
                         }
                     }
+                    else
+                    {
+                        Log.Error("HomeSweetHome: Failed to reflectively access 'mapParent' field.");
+                    }
                 }
                 else
                 {
-                    Log.Error("HomeSweetHome: Failed to reflectively access 'mapParent' field.");
+                    Log.Message("HomeSweetHome: Caravan was not gone for at least 3 days. Skipping thought application.");
                 }
             }
             else
@@ -105,6 +91,35 @@ namespace HomeSweetHome
                     Log.Message($"HomeSweetHome: Pawn {pawn.Name.ToStringShort} is not a colonist. Skipping thought application.");
                 }
             }
+        }
+    }
+
+    public class CaravanDepartureTimeTracker : WorldObjectComp
+    {
+        private int departureTime;
+
+        public void SetDepartureTime(int time)
+        {
+            departureTime = time;
+        }
+
+        public int GetDepartureTime()
+        {
+            return departureTime;
+        }
+
+        public override void PostExposeData()
+        {
+            base.PostExposeData();
+            Scribe_Values.Look(ref departureTime, "departureTime", 0);
+        }
+    }
+
+    public class CaravanDepartureTimeTrackerCompProperties : WorldObjectCompProperties
+    {
+        public CaravanDepartureTimeTrackerCompProperties()
+        {
+            this.compClass = typeof(CaravanDepartureTimeTracker);
         }
     }
 }
