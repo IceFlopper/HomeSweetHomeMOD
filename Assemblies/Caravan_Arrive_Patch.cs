@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 namespace HomeSweetHome
 {
-    [HarmonyPatch(typeof(CaravanExitMapUtility), "Arrived")]
 
 
 
