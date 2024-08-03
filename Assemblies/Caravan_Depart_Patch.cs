@@ -10,16 +10,15 @@ namespace HomeSweetHome
     {
         public static void Postfix(Caravan __instance, Pawn p)
         {
-            if (__instance.Faction == Faction.OfPlayer)
+            if (__instance?.Faction == Faction.OfPlayer)
             {
-                Log.Message($"HomeSweetHome: Pawn {p.Name.ToStringShort} added to caravan.");
-
-                // Store the departure ticks when the first pawn is added to the caravan
-                CaravanDepartureTracker tracker = Find.World.GetComponent<CaravanDepartureTracker>();
-                if (tracker != null)
+                var tracker = Find.World.GetComponent<CaravanDepartureTracker>();
+                if (tracker == null)
                 {
-                    tracker.SetDepartureTicks(__instance, Find.TickManager.TicksGame);
+                    Log.Error("HomeSweetHome: Failed to get CaravanDepartureTracker component.");
+                    return;
                 }
+                tracker.SetDepartureTicks(__instance, Find.TickManager.TicksGame);
             }
         }
     }
