@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    Placeholders for the thoughts the 0.9 version handed out. Anyone updating from
+    that version has these sitting on their colonists' memories, and a save that
+    references a def which no longer exists throws a red error per memory on load.
+
+    They carry no mood, they're hidden from the needs tab, and they expire within a
+    day of game time, so an updated save cleans itself up quietly and these can be
+    deleted in a later release once nobody is coming from 0.9 any more.
+  -->
+  <ThoughtDef Name="HSH_RetiredMemory" Abstract="True">
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>outdated</label>
+        <description>Left over from an older version of Home Sweet Home.</description>
+        <baseMoodEffect>0</baseMoodEffect>
+        <visible>false</visible>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_RetiredMemory">
+    <defName>HomeSweetHome_Thought</defName>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_RetiredMemory">
+    <defName>HomeSweetHome_Thought_Great</defName>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_RetiredMemory">
+    <defName>HomeSweetHome_Thought_Psychopath</defName>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_RetiredMemory">
+    <defName>HomeSweetHome_Thought_Neutral</defName>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_RetiredMemory">
+    <defName>HomeSweetHome_Thought_Dislike</defName>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_RetiredMemory">
+    <defName>HomeSweetHome_Thought_Worried</defName>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_RetiredMemory">
+    <defName>HomeSweetHome_DestinationArrival_Thought</defName>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_RetiredMemory">
+    <defName>HomeSweetHome_DestinationArrival_Thought_Great</defName>
+  </ThoughtDef>
+
+</Defs>
