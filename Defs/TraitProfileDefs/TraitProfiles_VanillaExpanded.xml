@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    Vanilla Traits Expanded, plus a couple of traits from other popular mods.
+    None of these are hard references. If the mod isn't installed the profile is
+    dropped on load and nothing is logged, so this file is safe to ship as is.
+  -->
+
+  <!--===================== people who like being gone =====================-->
+
+  <!-- VTE already makes these two walk faster in a caravan. Being cooped up at home is the problem. -->
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Wanderlust</defName>
+    <trait>VTE_Wanderlust</trait>
+    <missing>0.8</missing>
+    <homesick>0.25</homesick>
+    <company>1.1</company>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_WorldWeary</defName>
+    <trait>VTE_WorldWeary</trait>
+    <relief>1.2</relief>
+    <homesick>1.4</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_CouchPotato</defName>
+    <trait>VTE_CouchPotato</trait>
+    <homesick>1.35</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!-- Attached to a particular kind of ground under their feet. -->
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_ChildOfSea</defName>
+    <trait>VTE_ChildOfSea</trait>
+    <homesick>1.15</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_ChildOfMountain</defName>
+    <trait>VTE_ChildOfMountain</trait>
+    <homesick>1.15</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!--===================== how hard things land =====================-->
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Anxious</defName>
+    <trait>VTE_Anxious</trait>
+    <missing>1.35</missing>
+    <dread>1.25</dread>
+    <homesick>1.35</homesick>
+    <friction>1.2</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_ThickSkinned</defName>
+    <trait>VTE_ThickSkinned</trait>
+    <missing>0.75</missing>
+    <dread>0.75</dread>
+    <homesick>0.75</homesick>
+    <friction>0.75</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_ThinSkinned</defName>
+    <trait>VTE_ThinSkinned</trait>
+    <missing>1.3</missing>
+    <dread>1.3</dread>
+    <homesick>1.3</homesick>
+    <friction>1.3</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Desensitized</defName>
+    <trait>VTE_Desensitized</trait>
+    <missing>0.5</missing>
+    <relief>0.5</relief>
+    <gloating>0.7</gloating>
+    <dread>0.7</dread>
+    <homesick>0.6</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Coward</defName>
+    <trait>VTE_Coward</trait>
+    <homesick>1.25</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Brave</defName>
+    <trait>VTE_Brave</trait>
+    <homesick>0.85</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!--===================== who they can stand =====================-->
+
+  <!-- Wants nothing to do with anyone, so an empty colony is a good colony. -->
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Schizoid</defName>
+    <trait>VTE_Schizoid</trait>
+    <missing>0.4</missing>
+    <relief>0.5</relief>
+    <gloating>1.4</gloating>
+    <dread>1.3</dread>
+    <company>0.4</company>
+    <friction>1.3</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_FunLoving</defName>
+    <trait>VTE_FunLoving</trait>
+    <missing>1.15</missing>
+    <relief>1.2</relief>
+    <company>1.3</company>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!-- Holds a grudge, and enjoys the absence of the person they hold it against. -->
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Vengeful</defName>
+    <trait>VTE_Vengeful</trait>
+    <gloating>1.4</gloating>
+    <dread>1.4</dread>
+    <friction>1.4</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Snob</defName>
+    <trait>VTE_Snob</trait>
+    <company>0.85</company>
+    <friction>1.2</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Rebel</defName>
+    <trait>VTE_Rebel</trait>
+    <friction>1.2</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Submissive</defName>
+    <trait>VTE_Submissive</trait>
+    <friction>0.8</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_AnimalLover</defName>
+    <trait>VTE_AnimalLover</trait>
+    <company>1.1</company>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!--===================== comfort on the road =====================-->
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Neat</defName>
+    <trait>VTE_Neat</trait>
+    <homesick>1.2</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Slob</defName>
+    <trait>VTE_Slob</trait>
+    <homesick>0.9</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Insomniac</defName>
+    <trait>VTE_Insomniac</trait>
+    <homesick>1.1</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_HeavySleeper</defName>
+    <trait>VTE_HeavySleeper</trait>
+    <homesick>0.9</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_Perfectionist</defName>
+    <trait>VTE_Perfectionist</trait>
+    <homesick>1.15</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_AbsentMinded</defName>
+    <trait>VTE_AbsentMinded</trait>
+    <missing>0.85</missing>
+    <dread>0.85</dread>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VTE_IronStomach</defName>
+    <trait>VTE_IronStomach</trait>
+    <homesick>0.9</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!--===================== Combat Extended =====================-->
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_CE_Cowardly</defName>
+    <trait>Bravery</trait>
+    <degree>-1</degree>
+    <homesick>1.2</homesick>
+    <friction>1.1</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_CE_Brave</defName>
+    <trait>Bravery</trait>
+    <degree>1</degree>
+    <homesick>0.9</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_CE_Fearless</defName>
+    <trait>Bravery</trait>
+    <degree>2</degree>
+    <homesick>0.8</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+</Defs>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    Every value is a multiplier on one kind of reaction, so 1 means "this trait doesn't care".
+    Fields, in the order the mod uses them:
+
+      missing   - someone they're fond of is away
+      relief    - that person comes back
+      gloating  - someone they can't stand is away
+      dread     - that person comes back
+      homesick  - being away from home themselves
+      company   - travelling next to people they like
+      friction  - travelling next to people they don't
+
+    Traits are matched by name at load, so anything from a mod that isn't installed is
+    ignored quietly. Adding support for another trait mod means another file like this one,
+    nothing else.
+  -->
+
+  <!--===================== attachment and empathy =====================-->
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Psychopath</defName>
+    <trait>Psychopath</trait>
+    <missing>0</missing>
+    <relief>0</relief>
+    <gloating>0.4</gloating>
+    <dread>0.4</dread>
+    <homesick>0.5</homesick>
+    <company>0</company>
+    <friction>0.3</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Kind</defName>
+    <trait>Kind</trait>
+    <missing>1.3</missing>
+    <relief>1.3</relief>
+    <gloating>0.4</gloating>
+    <dread>0.5</dread>
+    <company>1.3</company>
+    <friction>0.6</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Abrasive</defName>
+    <trait>Abrasive</trait>
+    <missing>0.8</missing>
+    <relief>0.85</relief>
+    <gloating>1.2</gloating>
+    <dread>1.2</dread>
+    <company>0.7</company>
+    <friction>1.3</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Bloodlust</defName>
+    <trait>Bloodlust</trait>
+    <missing>0.6</missing>
+    <relief>0.7</relief>
+    <gloating>1.2</gloating>
+    <dread>1.1</dread>
+    <homesick>0.8</homesick>
+    <company>0.7</company>
+    <friction>1.2</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Jealous</defName>
+    <trait>Jealous</trait>
+    <missing>1.1</missing>
+    <gloating>1.2</gloating>
+    <dread>1.2</dread>
+    <company>0.9</company>
+    <friction>1.3</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!-- Keeps to themselves, so an emptier colony suits them fine. -->
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Recluse</defName>
+    <trait>Recluse</trait>
+    <missing>0.5</missing>
+    <relief>0.6</relief>
+    <gloating>1.4</gloating>
+    <dread>1.3</dread>
+    <homesick>1.1</homesick>
+    <company>0.4</company>
+    <friction>1.4</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_AnnoyingVoice</defName>
+    <trait>AnnoyingVoice</trait>
+    <friction>1.15</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_CreepyBreathing</defName>
+    <trait>CreepyBreathing</trait>
+    <friction>1.15</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!-- Remembers people vividly, for better and worse. -->
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_GreatMemory</defName>
+    <trait>GreatMemory</trait>
+    <missing>1.15</missing>
+    <relief>1.1</relief>
+    <dread>1.15</dread>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_PerfectMemory</defName>
+    <trait>PerfectMemory</trait>
+    <missing>1.25</missing>
+    <relief>1.15</relief>
+    <dread>1.25</dread>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!--===================== temperament =====================-->
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Sanguine</defName>
+    <trait>NaturalMood</trait>
+    <degree>2</degree>
+    <missing>0.7</missing>
+    <relief>1.2</relief>
+    <gloating>1.1</gloating>
+    <dread>0.7</dread>
+    <homesick>0.6</homesick>
+    <company>1.2</company>
+    <friction>0.7</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Optimist</defName>
+    <trait>NaturalMood</trait>
+    <degree>1</degree>
+    <missing>0.85</missing>
+    <relief>1.1</relief>
+    <dread>0.85</dread>
+    <homesick>0.8</homesick>
+    <company>1.1</company>
+    <friction>0.85</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Pessimist</defName>
+    <trait>NaturalMood</trait>
+    <degree>-1</degree>
+    <missing>1.15</missing>
+    <relief>0.9</relief>
+    <dread>1.15</dread>
+    <homesick>1.2</homesick>
+    <company>0.9</company>
+    <friction>1.15</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Depressive</defName>
+    <trait>NaturalMood</trait>
+    <degree>-2</degree>
+    <missing>1.35</missing>
+    <relief>0.8</relief>
+    <dread>1.3</dread>
+    <homesick>1.4</homesick>
+    <company>0.8</company>
+    <friction>1.3</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_IronWilled</defName>
+    <trait>Nerves</trait>
+    <degree>2</degree>
+    <missing>0.7</missing>
+    <dread>0.7</dread>
+    <homesick>0.6</homesick>
+    <friction>0.7</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Steadfast</defName>
+    <trait>Nerves</trait>
+    <degree>1</degree>
+    <missing>0.85</missing>
+    <dread>0.85</dread>
+    <homesick>0.8</homesick>
+    <friction>0.85</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Nervous</defName>
+    <trait>Nerves</trait>
+    <degree>-1</degree>
+    <missing>1.2</missing>
+    <dread>1.2</dread>
+    <homesick>1.25</homesick>
+    <friction>1.2</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Volatile</defName>
+    <trait>Nerves</trait>
+    <degree>-2</degree>
+    <missing>1.4</missing>
+    <dread>1.4</dread>
+    <homesick>1.45</homesick>
+    <friction>1.4</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Neurotic</defName>
+    <trait>Neurotic</trait>
+    <degree>1</degree>
+    <missing>1.2</missing>
+    <homesick>1.2</homesick>
+    <friction>1.1</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VeryNeurotic</defName>
+    <trait>Neurotic</trait>
+    <degree>2</degree>
+    <missing>1.35</missing>
+    <homesick>1.35</homesick>
+    <friction>1.2</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!--===================== life on the road =====================-->
+
+  <!-- Used to going without, so a hard trip bothers them less. -->
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Ascetic</defName>
+    <trait>Ascetic</trait>
+    <homesick>0.6</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Wimp</defName>
+    <trait>Wimp</trait>
+    <homesick>1.3</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Tough</defName>
+    <trait>Tough</trait>
+    <homesick>0.8</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Delicate</defName>
+    <trait>Delicate</trait>
+    <homesick>1.3</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!-- Misses their tunnels the moment there's sky overhead. -->
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Undergrounder</defName>
+    <trait>Undergrounder</trait>
+    <homesick>1.25</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Nudist</defName>
+    <trait>Nudist</trait>
+    <homesick>1.1</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Gourmand</defName>
+    <trait>Gourmand</trait>
+    <homesick>1.2</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_TorturedArtist</defName>
+    <trait>TorturedArtist</trait>
+    <missing>1.2</missing>
+    <homesick>1.2</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Masochist</defName>
+    <trait>Masochist</trait>
+    <homesick>0.8</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Slowpoke</defName>
+    <trait>SpeedOffset</trait>
+    <degree>-1</degree>
+    <homesick>1.1</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_FastWalker</defName>
+    <trait>SpeedOffset</trait>
+    <degree>1</degree>
+    <homesick>0.9</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Jogger</defName>
+    <trait>SpeedOffset</trait>
+    <degree>2</degree>
+    <homesick>0.85</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!--===================== Anomaly =====================-->
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Joyous</defName>
+    <trait>Joyous</trait>
+    <relief>1.3</relief>
+    <dread>0.8</dread>
+    <homesick>0.8</homesick>
+    <company>1.2</company>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_Disturbing</defName>
+    <trait>Disturbing</trait>
+    <company>0.7</company>
+    <friction>1.2</friction>
+  </HomeSweetHome.TraitProfileDef>
+
+  <!-- Their mind is somewhere else entirely. -->
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_VoidFascination</defName>
+    <trait>VoidFascination</trait>
+    <missing>0.7</missing>
+    <relief>0.7</relief>
+    <homesick>0.7</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+  <HomeSweetHome.TraitProfileDef>
+    <defName>HSH_Trait_BodyMastery</defName>
+    <trait>BodyMastery</trait>
+    <homesick>0.8</homesick>
+  </HomeSweetHome.TraitProfileDef>
+
+</Defs>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <HSH.ModTitle>Home Sweet Home</HSH.ModTitle>
+
+  <HSH.Settings.Enabled>Enable Home Sweet Home</HSH.Settings.Enabled>
+  <HSH.Settings.Enabled.Desc>Turn the whole mod off without unloading it. Switching this off also clears any thoughts it has already handed out.</HSH.Settings.Enabled.Desc>
+
+  <HSH.Settings.WhoFeelsWhat>Being apart</HSH.Settings.WhoFeelsWhat>
+
+  <HSH.Settings.Separation>Miss people who are away</HSH.Settings.Separation>
+  <HSH.Settings.Separation.Desc>Colonists carry a thought for each person they're separated from, growing the longer that person stays gone.</HSH.Settings.Separation.Desc>
+
+  <HSH.Settings.Reunion>React when people come home</HSH.Settings.Reunion>
+  <HSH.Settings.Reunion.Desc>Everyone at the colony reacts to a returning traveller, based on what they think of them and how long the trip took.</HSH.Settings.Reunion.Desc>
+
+  <HSH.Settings.Gloating>Enjoy the absence of people they dislike</HSH.Settings.Gloating>
+  <HSH.Settings.Gloating.Desc>Rivals and enemies leaving is a mood boost, and their return is not. Turn this off to keep only the positive relationships.</HSH.Settings.Gloating.Desc>
+
+  <HSH.Settings.OnTheRoad>On the road</HSH.Settings.OnTheRoad>
+
+  <HSH.Settings.Homesickness>Homesickness</HSH.Settings.Homesickness>
+  <HSH.Settings.Homesickness.Desc>Travellers wear down the longer they're away from the colony.</HSH.Settings.Homesickness.Desc>
+
+  <HSH.Settings.Homecoming>Homecoming mood boost</HSH.Settings.Homecoming>
+  <HSH.Settings.Homecoming.Desc>The relief of getting back through the gate, scaled by the length of the trip.</HSH.Settings.Homecoming.Desc>
+
+  <HSH.Settings.Destination>Satisfaction on arrival</HSH.Settings.Destination>
+  <HSH.Settings.Destination.Desc>A smaller boost for reaching whatever the caravan set out for.</HSH.Settings.Destination.Desc>
+
+  <HSH.Settings.Companions>Travelling companions matter</HSH.Settings.Companions>
+  <HSH.Settings.Companions.Desc>Travelling alongside friends and family lifts the mood. Travelling alongside someone they hate does the opposite.</HSH.Settings.Companions.Desc>
+
+  <HSH.Settings.TravelBonds>Journeys change opinions</HSH.Settings.TravelBonds>
+  <HSH.Settings.TravelBonds.Desc>Finishing a trip together shifts how the travellers see each other afterwards.</HSH.Settings.TravelBonds.Desc>
+
+  <HSH.Settings.Camping>Camping</HSH.Settings.Camping>
+
+  <HSH.Settings.CampCountsAsAway>Camping still counts as being away</HSH.Settings.CampCountsAsAway>
+  <HSH.Settings.CampCountsAsAway.Desc>Setting up camp is never treated as coming home. Turn this off if you'd rather a camped caravan stopped worrying the people back at the colony.</HSH.Settings.CampCountsAsAway.Desc>
+
+  <HSH.Settings.CampThoughts>Small comfort from making camp</HSH.Settings.CampThoughts>
+  <HSH.Settings.CampThoughts.Desc>A minor mood boost while a caravan is settled in a camp rather than out walking.</HSH.Settings.CampThoughts.Desc>
+
+  <HSH.Settings.CampWear>Days in camp count as {0} of a day on the road</HSH.Settings.CampWear>
+  <HSH.Settings.CampWear.Desc>How much a day spent camped wears a traveller down compared to a day of travel. Lower means camps are more restful. This only affects homesickness, not how long the colony thinks they've been gone.</HSH.Settings.CampWear.Desc>
+
+  <HSH.Settings.Tuning>Tuning</HSH.Settings.Tuning>
+
+  <HSH.Settings.Intensity>Mood effect strength: {0}</HSH.Settings.Intensity>
+  <HSH.Settings.Intensity.Desc>Scales every mood and opinion effect this mod produces.</HSH.Settings.Intensity.Desc>
+
+  <HSH.Settings.MinAbsence>Ignore absences shorter than {0} days</HSH.Settings.MinAbsence>
+  <HSH.Settings.MinAbsence.Desc>Nothing fires until a colonist has been gone this long, so short errands stay quiet.</HSH.Settings.MinAbsence.Desc>
+
+  <HSH.Settings.ResetDefaults>Reset to defaults</HSH.Settings.ResetDefaults>
+  <HSH.Settings.ClearThoughts>Clear all Home Sweet Home thoughts now</HSH.Settings.ClearThoughts>
+  <HSH.Settings.ClearThoughts.Done>Home Sweet Home thoughts cleared.</HSH.Settings.ClearThoughts.Done>
+
+</LanguageData>

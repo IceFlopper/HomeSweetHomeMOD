@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    Who you're stuck with on the road. Held for as long as the journey lasts, one per
+    companion, stage taken from how long you've been travelling together.
+  -->
+  <ThoughtDef Name="HSH_CompanionBase" Abstract="True">
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>4</durationDays>
+    <stackLimit>6</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <stackedEffectMultiplier>0.7</stackedEffectMultiplier>
+    <nullifiedIfNotColonist>true</nullifiedIfNotColonist>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_CompanionBase">
+    <defName>HSH_RoadPartner</defName>
+    <stages>
+      <li>
+        <label>travelling with my partner {0}</label>
+        <description>Anywhere is bearable with them alongside.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+      <li>
+        <label>days on the road with my partner {0}</label>
+        <description>Just the two of us and the horizon. There are worse assignments.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+      <li>
+        <label>a long journey with my partner {0}</label>
+        <description>We've been out here so long the trip has started to feel like ours.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_CompanionBase">
+    <defName>HSH_RoadFamily</defName>
+    <stages>
+      <li>
+        <label>travelling with {0}</label>
+        <description>Good to have family watching the other side of the trail.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>days on the road with {0}</label>
+        <description>We've not had this much time together in years.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+      <li>
+        <label>a long journey with {0}</label>
+        <description>Whatever else is out here, I'm not facing it alone.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_CompanionBase">
+    <defName>HSH_RoadFriend</defName>
+    <stages>
+      <li>
+        <label>travelling with my friend {0}</label>
+        <description>Makes the walking go quicker.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>days on the road with my friend {0}</label>
+        <description>We've run out of new things to talk about and it still isn't dull.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+      <li>
+        <label>a long journey with my friend {0}</label>
+        <description>You find out who someone is on a trip like this. They've held up.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_CompanionBase">
+    <defName>HSH_RoadRival</defName>
+    <stages>
+      <li>
+        <label>stuck travelling with {0}</label>
+        <description>Of all the people to send me out with.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+      <li>
+        <label>days on the road with {0}</label>
+        <description>There's nowhere out here to get away from them.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+      <li>
+        <label>a long journey stuck with {0}</label>
+        <description>Every night the same face across the same fire.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_CompanionBase">
+    <defName>HSH_RoadEnemy</defName>
+    <stages>
+      <li>
+        <label>stuck travelling with {0}</label>
+        <description>I have to sleep with them ten paces away.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+      <li>
+        <label>days on the road with {0}</label>
+        <description>One of us is going to say something eventually.</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+      <li>
+        <label>a long journey stuck with {0}</label>
+        <description>I've thought about the wilderness solving this for me. More than once.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- What the trip leaves behind in how two people see each other. -->
+  <ThoughtDef>
+    <defName>HSH_SharedTheRoad</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>4</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <stages>
+      <li>
+        <label>travelled together</label>
+        <baseOpinionOffset>8</baseOpinionOffset>
+      </li>
+      <li>
+        <label>travelled a long way together</label>
+        <baseOpinionOffset>14</baseOpinionOffset>
+      </li>
+      <li>
+        <label>came through a hard journey together</label>
+        <baseOpinionOffset>20</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>HSH_EnduredEachOther</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>4</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <stages>
+      <li>
+        <label>had to travel with me</label>
+        <baseOpinionOffset>-6</baseOpinionOffset>
+      </li>
+      <li>
+        <label>had to travel a long way with me</label>
+        <baseOpinionOffset>-10</baseOpinionOffset>
+      </li>
+      <li>
+        <label>was stuck with me for a whole journey</label>
+        <baseOpinionOffset>-14</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

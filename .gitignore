@@ -1,0 +1,15 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+
+# The built mod assembly is committed on purpose so the folder can be dropped
+# straight into Mods, but nothing else from the build should be.
+Assemblies/*
+!Assemblies/HomeSweetHome.dll

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    Fired once when a traveller walks back into a real colony. Stage comes from the
+    length of the trip they just finished: 0 = under 5 days, 1 = 5 to 12, 2 = beyond.
+    Setting up camp does not count as coming home, so none of these fire for that.
+  -->
+  <ThoughtDef Name="HSH_ReunionBase" Abstract="True">
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>4</durationDays>
+    <stackLimit>5</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <stackedEffectMultiplier>0.8</stackedEffectMultiplier>
+    <nullifiedIfNotColonist>true</nullifiedIfNotColonist>
+    <showBubble>true</showBubble>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_ReunionBase">
+    <defName>HSH_ReturnedPartner</defName>
+    <durationDays>5</durationDays>
+    <stages>
+      <li>
+        <label>my partner {0} came home</label>
+        <description>They're back, and in one piece. That's all I wanted.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+      <li>
+        <label>my partner {0} came home at last</label>
+        <description>I didn't realise how tightly I'd been holding on until they walked in.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+      <li>
+        <label>my partner {0} came back to me</label>
+        <description>I had almost given up. They walked through the gate anyway.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_ReunionBase">
+    <defName>HSH_ReturnedFamily</defName>
+    <durationDays>5</durationDays>
+    <stages>
+      <li>
+        <label>my family is home</label>
+        <description>{0} is back where they belong.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+      <li>
+        <label>my family is home at last</label>
+        <description>{0} has been gone long enough that I'd started counting days.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+      <li>
+        <label>{0} made it back to us</label>
+        <description>Half the colony had written them off. Not me. Well, not entirely.</description>
+        <baseMoodEffect>11</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_ReunionBase">
+    <defName>HSH_ReturnedFriend</defName>
+    <stages>
+      <li>
+        <label>my friend {0} is back</label>
+        <description>Good to have them around again.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+      <li>
+        <label>my friend {0} is back at last</label>
+        <description>They've got stories, and I've got time.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+      <li>
+        <label>my friend {0} made it home</label>
+        <description>People don't always come back from a trip that long.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- The ones nobody was hoping to see again. -->
+  <ThoughtDef ParentName="HSH_ReunionBase">
+    <defName>HSH_ReturnedRival</defName>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>my rival {0} is back</label>
+        <description>Well, that was a short holiday.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+      <li>
+        <label>my rival {0} is back</label>
+        <description>I'd got quite comfortable with them gone.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+      <li>
+        <label>my rival {0} turned up again</label>
+        <description>After all that time I'd nearly forgotten about them. Nearly.</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="HSH_ReunionBase">
+    <defName>HSH_ReturnedEnemy</defName>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>{0} is back</label>
+        <description>Of course they made it. People like that always do.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+      <li>
+        <label>{0} is back</label>
+        <description>The one stretch of quiet I've had here, and they've ended it.</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+      <li>
+        <label>{0} came back after all</label>
+        <description>I'd started to believe the wilderness had done me a favour.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

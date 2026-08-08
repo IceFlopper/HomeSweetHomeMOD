@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ModMetaData>
-    <name>HomeSweetHome</name>
-    <packageId>funstab.HomeSweetHome</packageId>
-    <author>funstab</author>
-    <description>Adds mood effects for colonists when caravans are away and return.</description>
-    <url></url>
-    <supportedVersions>
-        <li>1.5</li>
-    </supportedVersions>
+  <name>Home Sweet Home</name>
+  <packageId>funstab.HomeSweetHome</packageId>
+  <author>funstab</author>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Colonists notice when somebody leaves, how long they stay gone, and who walks back through the gate.
+
+WHILE THEY'RE AWAY
+Everyone left behind reacts to the people they're separated from, one thought each. A partner or a child hurts most, then siblings and parents, then close friends. Somebody they can't stand leaving is a quiet relief. The effect grows the longer the absence runs, in four steps, and it works both ways: a traveller misses the people back home just as much.
+
+COMING BACK
+Walking through the gate after a long haul is the mood boost the mod is named for, scaled by how long the trip took. Everyone at home reacts too, warmly or otherwise depending on what they thought of the traveller.
+
+ON THE ROAD
+Travellers get homesick, and who they're travelling with matters. A caravan of friends holds together. A caravan carrying two people who hate each other does not. A shared journey also shifts how those people see each other afterwards.
+
+CAMPING
+Setting up camp is not coming home. The journey keeps running, homesickness keeps building (a little slower, since a fire and a roof help), and nobody gets a homecoming out of it. Works with vanilla 1.6 camps and with Set Up Camp.
+
+TRAITS
+Around sixty trait profiles from vanilla, the DLCs and Vanilla Traits Expanded decide how hard any of this lands. Psychopaths feel nothing. Recluses enjoy an empty colony. Depressives take absence badly, iron-willed colonists shrug it off, and wanderlusters would rather not go home at all. Profiles are plain XML, so any mod can add its own.
+
+COMPATIBILITY
+The mod reads where colonists are instead of hooking caravan events, so caravans, vehicles, shuttles, transport pods, outposts and modded travel all work without special cases. No Harmony patches, safe to add to a running save, and safe to remove.
+
+Original mod by IceFlopper. Rebuilt for 1.6.</description>
 </ModMetaData>
