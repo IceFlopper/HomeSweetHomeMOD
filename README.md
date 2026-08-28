@@ -14,6 +14,8 @@ Everyone left behind carries a thought for each person they're separated from. A
 
 The effect grows in four steps as the absence runs on — under three days, three to seven, seven to fifteen, and beyond that. It works in both directions: a colonist out on a caravan misses the people back home exactly the same way.
 
+Nobody misses a stranger. Two colonists have to have actually lived in the colony together before any of this applies to them, easing in over the first few days and counting for nothing before that. A prisoner recruited the week after a caravan rolled out has never met the people on it, so they feel nothing until it comes back — however warmly the game's opinion score happens to rate somebody they've never spoken to. There's a slider for how long "long enough" is.
+
 ### Coming back
 
 Walking through the gate after a long haul is the mood boost the mod is named for, scaled by how long the trip took. Everyone at the colony reacts too — warmly if they liked the traveller, considerably less so if they didn't.
@@ -69,7 +71,7 @@ Traits are matched **by name at load time**, so a profile for a mod that isn't i
 The mod works out where colonists are rather than hooking caravan events. That means caravans, vehicles, shuttles, transport pods, outposts, quest maps and modded travel all work without special cases written for any of them.
 
 - **No Harmony patches at all.** Nothing to conflict with.
-- Safe to add to a running save.
+- Safe to add to a running save. Colonists already in the colony are dated from their "time as colonist" record, so nobody is treated as a stranger on the sweep after you install it.
 - Safe to remove — thoughts expire on their own within a few days.
 - Tested against RimWorld 1.6.4871 with Core, Royalty, Ideology, Biotech, Anomaly and Odyssey.
 
@@ -96,6 +98,7 @@ Everything is toggleable from the mod settings menu:
 | Camp wear factor | 50% |
 | Mood effect strength | 100% |
 | Ignore absences shorter than | 1 day |
+| Strangers need this long together | 4 days |
 
 There's also a button to wipe every thought the mod has handed out, for when you want a clean slate mid-save.
 

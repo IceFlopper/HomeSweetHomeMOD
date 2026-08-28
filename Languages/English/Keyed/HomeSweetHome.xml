@@ -53,6 +53,9 @@
   <HSH.Settings.MinAbsence>Ignore absences shorter than {0} days</HSH.Settings.MinAbsence>
   <HSH.Settings.MinAbsence.Desc>Nothing fires until a colonist has been gone this long, so short errands stay quiet.</HSH.Settings.MinAbsence.Desc>
 
+  <HSH.Settings.Familiar>Strangers need {0} days together</HSH.Settings.Familiar>
+  <HSH.Settings.Familiar.Desc>Two colonists have to have lived in the same colony this long before they feel each other's absence at full strength, easing in from nothing over that time. Somebody who joined after a caravan left never met the people on it and feels nothing at all, however highly the game's opinion score happens to rate them. Set to zero to go back to reacting from the moment they arrive.</HSH.Settings.Familiar.Desc>
+
   <HSH.Settings.ResetDefaults>Reset to defaults</HSH.Settings.ResetDefaults>
   <HSH.Settings.ClearThoughts>Clear all Home Sweet Home thoughts now</HSH.Settings.ClearThoughts>
   <HSH.Settings.ClearThoughts.Done>Home Sweet Home thoughts cleared.</HSH.Settings.ClearThoughts.Done>

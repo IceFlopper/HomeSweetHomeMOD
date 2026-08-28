@@ -20,6 +20,7 @@ namespace HomeSweetHome
         private const int MissingGraceTicks = 30000;
 
         private List<Journey> journeys = new List<Journey>();
+        private Acquaintance acquaintance = new Acquaintance();
 
         private readonly Dictionary<Pawn, Whereabouts> placeNow = new Dictionary<Pawn, Whereabouts>();
         private readonly Dictionary<Pawn, object> groupNow = new Dictionary<Pawn, object>();
@@ -52,14 +53,15 @@ namespace HomeSweetHome
             HomeSweetHomeSettings settings = HomeSweetHomeMod.Settings;
             int now = Find.TickManager.TicksGame;
 
-            TakeRoster();
+            TakeRoster(now);
             UpdateJourneys(now);
-            ApplySeparation(settings);
-            ApplyTravelState(settings);
+            ApplySeparation(settings, now);
+            ApplyTravelState(settings, now);
+            acquaintance.Prune();
         }
 
         /// <summary>Snapshot of every colonist we can still account for, and where they are.</summary>
-        private void TakeRoster()
+        private void TakeRoster(int now)
         {
             roster.Clear();
             placeNow.Clear();
@@ -81,6 +83,7 @@ namespace HomeSweetHome
                 }
 
                 roster.Add(pawn);
+                acquaintance.JoinedTickOf(pawn, now);
                 placeNow[pawn] = place;
                 groupNow[pawn] = WhereaboutsUtility.GroupKeyOf(pawn);
             }
@@ -116,7 +119,7 @@ namespace HomeSweetHome
 
                 if (place == Whereabouts.Home)
                 {
-                    Welcome(journey);
+                    Welcome(journey, now);
                     journeys.RemoveAt(i);
                     continue;
                 }
@@ -172,7 +175,7 @@ namespace HomeSweetHome
         /// For every colonist who has been away long enough to notice, tell everyone who isn't
         /// with them how they feel about it.
         /// </summary>
-        private void ApplySeparation(HomeSweetHomeSettings settings)
+        private void ApplySeparation(HomeSweetHomeSettings settings, int now)
         {
             if (!settings.separationThoughts)
             {
@@ -197,6 +200,8 @@ namespace HomeSweetHome
                     continue;
                 }
 
+                acquaintance.NoLaterThan(absent, journey.departedTick, now);
+
                 int stage = ThoughtOps.StageForAbsence(journey.DaysGone);
                 object absentGroup = groupNow.TryGetValue(absent, out object key) ? key : null;
 
@@ -215,13 +220,22 @@ namespace HomeSweetHome
                         continue;
                     }
 
-                    ApplySeparationBetween(observer, absent, stage, settings);
+                    ApplySeparationBetween(observer, absent, stage, settings, journey.departedTick, now);
                 }
             }
         }
 
-        private void ApplySeparationBetween(Pawn observer, Pawn absent, int stage, HomeSweetHomeSettings settings)
+        private void ApplySeparationBetween(Pawn observer, Pawn absent, int stage, HomeSweetHomeSettings settings, int departedTick, int now)
         {
+            // Somebody who joined after the caravan rolled out has never met these people, and
+            // somebody recruited the day before it left barely has. Neither should be pining.
+            float familiarity = acquaintance.Familiarity(observer, absent, departedTick, now);
+            if (familiarity <= 0f)
+            {
+                ThoughtOps.ClearSeparation(observer, absent);
+                return;
+            }
+
             Bond bond = Bonds.Between(observer, absent);
             ThoughtDef def = ThoughtOps.SeparationThoughtFor(bond);
             if (def == null)
@@ -245,7 +259,13 @@ namespace HomeSweetHome
             }
 
             int opinion = observer.relations.OpinionOf(absent);
-            float power = ThoughtOps.ClampPower(Bonds.Strength(bond, opinion) * traitFactor * settings.intensity);
+            float power = ThoughtOps.ClampPower(Bonds.Strength(bond, opinion) * traitFactor * settings.intensity * familiarity);
+            if (power <= 0.01f)
+            {
+                ThoughtOps.ClearSeparation(observer, absent);
+                return;
+            }
+
             ThoughtOps.SetOngoing(observer, absent, ThoughtOps.SeparationThoughts, def, stage, power);
         }
 
@@ -259,7 +279,7 @@ namespace HomeSweetHome
 
         // ------------------------------------------------------------ the road
 
-        private void ApplyTravelState(HomeSweetHomeSettings settings)
+        private void ApplyTravelState(HomeSweetHomeSettings settings, int now)
         {
             for (int i = 0; i < travelling.Count; i++)
             {
@@ -291,12 +311,12 @@ namespace HomeSweetHome
 
                 if (settings.companionThoughts)
                 {
-                    ApplyCompanionship(journey, reaction, settings);
+                    ApplyCompanionship(journey, reaction, settings, now);
                 }
             }
         }
 
-        private void ApplyCompanionship(Journey journey, Reaction reaction, HomeSweetHomeSettings settings)
+        private void ApplyCompanionship(Journey journey, Reaction reaction, HomeSweetHomeSettings settings, int now)
         {
             Pawn traveller = journey.pawn;
             List<Pawn> companions = WhereaboutsUtility.TravelCompanions(traveller);
@@ -322,6 +342,15 @@ namespace HomeSweetHome
                     continue;
                 }
 
+                // Sharing a road is itself getting to know somebody, so this one measures up to
+                // now rather than to the day they set off.
+                float familiarity = acquaintance.Familiarity(traveller, companion, now, now);
+                if (familiarity <= 0f)
+                {
+                    ThoughtOps.ClearCompanionship(traveller, companion);
+                    continue;
+                }
+
                 Bond bond = Bonds.Between(traveller, companion);
                 ThoughtDef def = ThoughtOps.CompanionThoughtFor(bond);
                 if (def == null)
@@ -338,7 +367,13 @@ namespace HomeSweetHome
                 }
 
                 int opinion = traveller.relations.OpinionOf(companion);
-                float power = ThoughtOps.ClampPower(Bonds.Strength(bond, opinion) * traitFactor * settings.intensity);
+                float power = ThoughtOps.ClampPower(Bonds.Strength(bond, opinion) * traitFactor * settings.intensity * familiarity);
+                if (power <= 0.01f)
+                {
+                    ThoughtOps.ClearCompanionship(traveller, companion);
+                    continue;
+                }
+
                 ThoughtOps.SetOngoing(traveller, companion, ThoughtOps.CompanionThoughts, def, stage, power);
             }
         }
@@ -360,7 +395,7 @@ namespace HomeSweetHome
         }
 
         /// <summary>They made it back to a real colony.</summary>
-        private void Welcome(Journey journey)
+        private void Welcome(Journey journey, int now)
         {
             HomeSweetHomeSettings settings = HomeSweetHomeMod.Settings;
             Pawn traveller = journey.pawn;
@@ -394,18 +429,24 @@ namespace HomeSweetHome
                     {
                         continue;
                     }
-                    GiveReunion(observer, traveller, tripStage, settings);
+                    GiveReunion(observer, traveller, tripStage, settings, journey.departedTick, now);
                 }
             }
 
             if (settings.travelBonds && companions != null)
             {
-                AwardSharedRoad(traveller, companions, days, settings);
+                AwardSharedRoad(traveller, companions, days, settings, now);
             }
         }
 
-        private void GiveReunion(Pawn observer, Pawn traveller, int stage, HomeSweetHomeSettings settings)
+        private void GiveReunion(Pawn observer, Pawn traveller, int stage, HomeSweetHomeSettings settings, int departedTick, int now)
         {
+            float familiarity = acquaintance.Familiarity(observer, traveller, departedTick, now);
+            if (familiarity <= 0f)
+            {
+                return;
+            }
+
             Bond bond = Bonds.Between(observer, traveller);
             ThoughtDef def = ThoughtOps.ReunionThoughtFor(bond);
             if (def == null)
@@ -421,12 +462,12 @@ namespace HomeSweetHome
             Reaction reaction = TraitProfiles.For(observer);
             float traitFactor = Bonds.IsNegative(bond) ? reaction.dread : reaction.relief;
             int opinion = observer.relations.OpinionOf(traveller);
-            float power = ThoughtOps.ClampPower(Bonds.Strength(bond, opinion) * traitFactor * settings.intensity);
+            float power = ThoughtOps.ClampPower(Bonds.Strength(bond, opinion) * traitFactor * settings.intensity * familiarity);
             ThoughtOps.GiveOneShot(observer, def, stage, power, traveller);
         }
 
         /// <summary>A trip together leaves a mark on how two people see each other.</summary>
-        private void AwardSharedRoad(Pawn traveller, List<Pawn> companions, float days, HomeSweetHomeSettings settings)
+        private void AwardSharedRoad(Pawn traveller, List<Pawn> companions, float days, HomeSweetHomeSettings settings, int now)
         {
             int stage = ThoughtOps.StageForTrip(days);
 
@@ -438,14 +479,21 @@ namespace HomeSweetHome
                     continue;
                 }
 
+                float familiarity = acquaintance.Familiarity(traveller, companion, now, now);
+                if (familiarity <= 0f)
+                {
+                    continue;
+                }
+
+                float power = settings.intensity * familiarity;
                 Bond bond = Bonds.Between(traveller, companion);
                 if (Bonds.IsNegative(bond))
                 {
-                    ThoughtOps.GiveOneShot(traveller, HSHThoughtDefOf.HSH_EnduredEachOther, stage, settings.intensity, companion);
+                    ThoughtOps.GiveOneShot(traveller, HSHThoughtDefOf.HSH_EnduredEachOther, stage, power, companion);
                 }
                 else if (bond != Bond.Indifferent || days >= 5f)
                 {
-                    ThoughtOps.GiveOneShot(traveller, HSHThoughtDefOf.HSH_SharedTheRoad, stage, settings.intensity, companion);
+                    ThoughtOps.GiveOneShot(traveller, HSHThoughtDefOf.HSH_SharedTheRoad, stage, power, companion);
                 }
             }
         }
@@ -516,6 +564,7 @@ namespace HomeSweetHome
         {
             base.ExposeData();
             Scribe_Collections.Look(ref journeys, "journeys", LookMode.Deep);
+            Scribe_Deep.Look(ref acquaintance, "acquaintance");
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -524,6 +573,11 @@ namespace HomeSweetHome
                     journeys = new List<Journey>();
                 }
                 journeys.RemoveAll(j => j == null || j.pawn == null);
+
+                if (acquaintance == null)
+                {
+                    acquaintance = new Acquaintance();
+                }
             }
         }
     }

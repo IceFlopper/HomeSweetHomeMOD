@@ -26,7 +26,7 @@ namespace HomeSweetHome
         {
             HomeSweetHomeSettings s = Settings;
 
-            Rect viewRect = new Rect(0f, 0f, inRect.width - 20f, 660f);
+            Rect viewRect = new Rect(0f, 0f, inRect.width - 20f, 720f);
             Widgets.BeginScrollView(inRect, ref scrollPosition, viewRect);
 
             Listing_Standard list = new Listing_Standard();
@@ -66,6 +66,9 @@ namespace HomeSweetHome
             list.Gap(6f);
             list.Label("HSH.Settings.MinAbsence".Translate(s.minAbsenceDays.ToString("0.0")), -1f, "HSH.Settings.MinAbsence.Desc".Translate());
             s.minAbsenceDays = Widgets.HorizontalSlider(list.GetRect(22f), s.minAbsenceDays, 0.25f, 6f, false, null, null, null, 0.25f);
+            list.Gap(6f);
+            list.Label("HSH.Settings.Familiar".Translate(s.familiarDays.ToString("0.0")), -1f, "HSH.Settings.Familiar.Desc".Translate());
+            s.familiarDays = Widgets.HorizontalSlider(list.GetRect(22f), s.familiarDays, 0f, 15f, false, null, null, null, 0.5f);
             list.Gap(10f);
 
             if (list.ButtonText("HSH.Settings.ResetDefaults".Translate()))

@@ -25,6 +25,13 @@ namespace HomeSweetHome
         /// <summary>Nothing fires until someone has been gone this long, so day trips stay quiet.</summary>
         public float minAbsenceDays = 1f;
 
+        /// <summary>
+        /// How long two colonists have to have lived together before either of them feels the
+        /// other's absence at full strength. Somebody who arrived after the caravan left feels
+        /// nothing at all, whatever the numbers say they think of the people on it.
+        /// </summary>
+        public float familiarDays = 4f;
+
         /// <summary>How heavily a day spent in camp counts toward wearing a traveller down, against a day on the road.</summary>
         public float campWearFactor = 0.5f;
 
@@ -43,6 +50,7 @@ namespace HomeSweetHome
             campingCountsAsAway = true;
             intensity = 1f;
             minAbsenceDays = 1f;
+            familiarDays = 4f;
             campWearFactor = 0.5f;
         }
 
@@ -62,6 +70,7 @@ namespace HomeSweetHome
             Scribe_Values.Look(ref campingCountsAsAway, "campingCountsAsAway", true);
             Scribe_Values.Look(ref intensity, "intensity", 1f);
             Scribe_Values.Look(ref minAbsenceDays, "minAbsenceDays", 1f);
+            Scribe_Values.Look(ref familiarDays, "familiarDays", 4f);
             Scribe_Values.Look(ref campWearFactor, "campWearFactor", 0.5f);
         }
     }
